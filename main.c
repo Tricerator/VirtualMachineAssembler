@@ -10,9 +10,9 @@ void printStack();
 
 //registers
 typedef enum {
-  A,	B,	C,	D,	E,	F,
-					IP, SP,
-	NUM_OF_REGISTERS
+A,	B,	C,	D,	E,	F,
+IP, 	SP,
+NUM_OF_REGISTERS
 } Registers;
 
 
@@ -27,29 +27,29 @@ typedef enum {
   POP,
   SET,
   HLT,
-	JMP,
-	NOP
+  JMP,
+  NOP
 } InstructionSet;
 
  
  
   
-// my writen program
+// my written program
 const int program[] = {
     PSH, 5,
     PSH, 6,
-		JMP, 1,
+    JMP, 1,
     JMP, 0,
-		ADD,
+    ADD,
     PSH, 1,
-		PSH,-3,
-		ADD,
-		ADD,
-		NOP,
-		POP,
-		PSH, 4,
-		POP,
-		NOP,
+    PSH,-3,
+    ADD,
+    ADD,
+    NOP,
+    POP,
+    PSH, 4,
+    POP,
+    NOP,
     HLT,
 		
 };
@@ -98,7 +98,8 @@ void eval(int instruction) {
 			registers[E] = program[++ip];
 			ip = ip + registers[E];
 			printf("JMP\t Jumped for %d back\t", registers[E]);
-			printStack();	
+			printStack();
+			break;
 	case ADD:
 			registers[A] = stack[sp--];
 			registers[B] = stack[sp--];
@@ -111,7 +112,7 @@ void eval(int instruction) {
 	case NOP:
 			printf("NOP \t No operation\t\t");
 			printStack();
-      break;
+      			break;
 		}	
 
 }
